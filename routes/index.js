@@ -1,10 +1,11 @@
 const express = require('express');
+const router = express.Router();
+//Import Controller
+const homeController = require("../controllers/home_controller");
 
-const router  = express.Router();
 
-console.log("router started");
-
-
+//Create Router
+router.get("/", homeController.home);
 
 
 
