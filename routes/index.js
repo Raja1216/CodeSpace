@@ -6,6 +6,8 @@ const homeController = require("../controllers/home_controller");
 
 //Create Router
 router.get("/", homeController.home);
+//If Request is comming from users that go to users router
+router.use('/users', require('./users'));
 
 
 
