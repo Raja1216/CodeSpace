@@ -1,0 +1,9 @@
+<li>
+  <p><%=comment.content %></p>
+  <small>Auther: <%= comment.user.name %></small>
+  <% if((locals.user) && (locals.user.id == post.user.id)){%>
+  <small class="delete-link">
+    <a href="comments/destroy/<%= comment.id %>" title="Delete Comment">X</a>
+  </small>
+  <% } %>
+</li>

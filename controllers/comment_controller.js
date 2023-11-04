@@ -27,3 +27,30 @@ module.exports.createComment = function (req, res) {
       return;
     });
 };
+
+module.exports.destroy = function (req, res) {
+  Comment.findById(req.params.id)
+    .populate("post")
+    .then((comment) => {
+      if (comment.user == req.user.id || comment.post.user == req.user.id) {
+        let post_id = comment.post._id;
+        comment.deleteOne();
+
+        Post.findByIdAndUpdate(post_id, { $pull: { comments: req.params.id } })
+          .then((post) => {
+            return res.redirect("back");
+          })
+          .catch((err) => {
+            console.log("Error in Updating post", err);
+            return;
+          });
+      } else {
+        console.log("Error in Finiding the Comment1");
+        return;
+      }
+    })
+    .catch((err) => {
+      console.log("Error in Finiding the Comment");
+      return;
+    });
+};

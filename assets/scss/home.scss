@@ -1,22 +1,96 @@
-#posts-list-container{
-    ul{
+#feed-posts {
+  display: grid;
+  justify-content: center;
+  #new-post-form {
     display: grid;
     gap: 1rem;
-    li{
+    textarea {
+      border-radius: 0.3rem;
+      padding: 1rem;
+    }
+    input {
+      height: 2.5rem;
+      border-radius: 0.3rem;
+      border: none;
+      background-color: darkcyan;
+      color: white;
+      font-size: large;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+  #posts-list-container {
+    width: 40rem;
+    ul {
+      display: grid;
+      gap: 1rem;
+      li {
         background: #b37de5;
         color: white;
         display: grid;
-        .user-posts{
-            display: flex;
-            justify-content: space-between;
+        hr {
+          width: 100%;
+        }
+        .user-posts {
+          display: flex;
+          justify-content: space-between;
+          .delete-link {
+            a {
+              text-decoration: none;
+              color: white;
+              background: red;
+              padding: 0.3rem;
+              border-radius: 0.2rem;
+            }
+          }
+        }
+        .post-comments {
+          ul {
+            li {
+              display: flex;
+              justify-content: space-between;
+              background-color: aliceblue;
+              color: blue;
+              .delete-link {
+                a {
+                  text-decoration: none;
+                  color: white;
+                  background: red;
+                  padding: 0.3rem;
+                  border-radius: 0.2rem;
+                }
+              }
+            }
+          }
         }
         padding: 0 2rem;
         max-width: 30rem;
         border-radius: 0.3rem;
-        small{
-            padding-top: 1rem;
+        small {
+          padding-top: 1rem;
         }
+        .post-comments-form {
+          text-align: center;
+          padding: 1rem;
+          form {
+            .comment-input {
+              height: 2rem;
+              width: 12rem;
+              padding: 0.2rem;
+              border-radius: 0.3rem;
+              border: none;
+            }
+            .comment-btn {
+              height: 2.3rem;
+              border: none;
+              border-radius: 0.2rem;
+              background-color: chartreuse;
+              color: darkblue;
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
-    }
-    
+  }
 }

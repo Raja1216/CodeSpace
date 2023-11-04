@@ -1,15 +1,70 @@
-#posts-list-container ul {
+#feed-posts {
   display: grid;
-  gap: 1rem; }
-  #posts-list-container ul li {
-    background: #b37de5;
-    color: white;
+  justify-content: center; }
+  #feed-posts #new-post-form {
     display: grid;
-    padding: 0 2rem;
-    max-width: 30rem;
-    border-radius: 0.3rem; }
-    #posts-list-container ul li .user-posts {
-      display: flex;
-      justify-content: space-between; }
-    #posts-list-container ul li small {
-      padding-top: 1rem; }
+    gap: 1rem; }
+    #feed-posts #new-post-form textarea {
+      border-radius: 0.3rem;
+      padding: 1rem; }
+    #feed-posts #new-post-form input {
+      height: 2.5rem;
+      border-radius: 0.3rem;
+      border: none;
+      background-color: darkcyan;
+      color: white;
+      font-size: large;
+      font-weight: 700;
+      cursor: pointer; }
+  #feed-posts #posts-list-container {
+    width: 40rem; }
+    #feed-posts #posts-list-container ul {
+      display: grid;
+      gap: 1rem; }
+      #feed-posts #posts-list-container ul li {
+        background: #b37de5;
+        color: white;
+        display: grid;
+        padding: 0 2rem;
+        max-width: 30rem;
+        border-radius: 0.3rem; }
+        #feed-posts #posts-list-container ul li hr {
+          width: 100%; }
+        #feed-posts #posts-list-container ul li .user-posts {
+          display: flex;
+          justify-content: space-between; }
+          #feed-posts #posts-list-container ul li .user-posts .delete-link a {
+            text-decoration: none;
+            color: white;
+            background: red;
+            padding: 0.3rem;
+            border-radius: 0.2rem; }
+        #feed-posts #posts-list-container ul li .post-comments ul li {
+          display: flex;
+          justify-content: space-between;
+          background-color: aliceblue;
+          color: blue; }
+          #feed-posts #posts-list-container ul li .post-comments ul li .delete-link a {
+            text-decoration: none;
+            color: white;
+            background: red;
+            padding: 0.3rem;
+            border-radius: 0.2rem; }
+        #feed-posts #posts-list-container ul li small {
+          padding-top: 1rem; }
+        #feed-posts #posts-list-container ul li .post-comments-form {
+          text-align: center;
+          padding: 1rem; }
+          #feed-posts #posts-list-container ul li .post-comments-form form .comment-input {
+            height: 2rem;
+            width: 12rem;
+            padding: 0.2rem;
+            border-radius: 0.3rem;
+            border: none; }
+          #feed-posts #posts-list-container ul li .post-comments-form form .comment-btn {
+            height: 2.3rem;
+            border: none;
+            border-radius: 0.2rem;
+            background-color: chartreuse;
+            color: darkblue;
+            cursor: pointer; }
