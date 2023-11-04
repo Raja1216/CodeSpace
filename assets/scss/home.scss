@@ -5,8 +5,11 @@
     li{
         background: #b37de5;
         color: white;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        .user-posts{
+            display: flex;
+            justify-content: space-between;
+        }
         padding: 0 2rem;
         max-width: 30rem;
         border-radius: 0.3rem;

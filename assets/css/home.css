@@ -4,10 +4,12 @@
   #posts-list-container ul li {
     background: #b37de5;
     color: white;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     padding: 0 2rem;
     max-width: 30rem;
     border-radius: 0.3rem; }
+    #posts-list-container ul li .user-posts {
+      display: flex;
+      justify-content: space-between; }
     #posts-list-container ul li small {
       padding-top: 1rem; }

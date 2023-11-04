@@ -10,6 +10,8 @@ router.get("/", homeController.home);
 router.use('/users', require('./users'));
 //If Request is comming from posts that go to posts router
 router.use('/posts', require('./posts'));
+//If Request is comming from comments that go to comments router
+router.use('/comments', require('./comments'));
 
 
 
