@@ -1,2 +1,25 @@
+<link rel="stylesheet" href="/css/home.css" />
 
-    <h1>CodeSpace / <%= title %></h1></h1>
+<h1>CodeSpace / <%= title %></h1>
+<section id="feed-posts">
+  <form action="/posts/create-post" method="post" id="new-post-form">
+    <textarea
+      name="content"
+      cols="30"
+      rows="3"
+      placeholder="Type Here...."
+    ></textarea>
+    <input type="submit" value="Post" />
+  </form>
+  <h2>Posts</h2>
+  <div id="posts-list-container">
+    <ul>
+      <% for(i of posts){ %>
+      <li>
+        <p><%=i.content %></p>
+        <small>Auther: <%= i.user.name %></small>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</section>

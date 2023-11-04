@@ -1,0 +1,23 @@
+header{
+    display: flex;
+    background-color: rgb(15, 115, 238);
+    justify-content: space-between;
+    padding: 1rem;
+    color: antiquewhite;
+    h2{
+        margin: 0;
+    }
+    ul{
+        display: flex;
+        gap: 2rem;
+        margin: 0;
+        li{
+            list-style: none;
+            a{
+                text-decoration: none;
+                color: antiquewhite;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}

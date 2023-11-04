@@ -8,6 +8,8 @@ const homeController = require("../controllers/home_controller");
 router.get("/", homeController.home);
 //If Request is comming from users that go to users router
 router.use('/users', require('./users'));
+//If Request is comming from posts that go to posts router
+router.use('/posts', require('./posts'));
 
 
 
