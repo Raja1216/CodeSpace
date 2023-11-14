@@ -10,19 +10,21 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "email",
+      passReqToCallback: true,
     },
-    function (email, password, done) {
+    function (req, email, password, done) {
       //find a user and establish the indentity
       User.findOne({ email: email })
         .then((user) => {
           if (!user || user.password != password) {
-            console.log("Invalid Username/password");
+            req.flash("error", "Invalid Username/password");
             return done(null, false);
+          } else {
+            return done(null, user);
           }
-          return done(null, user);
         })
         .catch((err) => {
-          console.log("Error in Finding User in Passport");
+          req.flash("error", err);
           return done(err);
         });
     }
@@ -48,20 +50,20 @@ passport.deserializeUser(function (id, done) {
 
 //Check the user is authenticated
 passport.checkAuthentication = function (req, res, next) {
-  //If the user is sign in 
-  if(req.isAuthenticated()){
+  //If the user is sign in
+  if (req.isAuthenticated()) {
     return next();
   }
   // if user is not Authenticated
-  return res.redirect('/users/sign-in')
+  return res.redirect("/users/sign-in");
 };
 
 //Set the user to the view
 passport.setAuthenticatedUser = function (req, res, next) {
-  if(req.isAuthenticated()){
-    res.locals.user = req.user
+  if (req.isAuthenticated()) {
+    res.locals.user = req.user;
   }
   next();
-}
+};
 
 module.exports = passport;

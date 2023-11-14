@@ -6,6 +6,9 @@ header {
   color: antiquewhite; }
   header h2 {
     margin: 0; }
+    header h2 a {
+      text-decoration: none;
+      color: antiquewhite; }
   header ul {
     display: flex;
     gap: 2rem;

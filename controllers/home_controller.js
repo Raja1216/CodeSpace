@@ -1,26 +1,30 @@
 const Post = require("../models/post");
+const User = require("../models/user");
 
-module.exports.home = function (req, res) {
+module.exports.home = async function (req, res) {
   //Get posts for the current user populate is use for get user table data from user id
-  Post.find({})
-    .populate("user")
-    //Populate nested relations for post comments and users
-    .populate({
-      path: "comments",
-      populate: {
-        path: "user",
-      },
-    })
-    .then((posts) => {
-      return res.render("home", {
-        title: "Home",
-        posts: posts,
+  try {
+    let posts = await Post.find({})
+      .sort('-createdAt')
+      .populate("user")
+      //Populate nested relations for post comments and users
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+        },
       });
-    })
-    .catch((err) => {
-      console.log("Error in geting Post", err);
-      return;
+
+    let users = await User.find({});
+    return res.render("home", {
+      title: "Home",
+      posts: posts,
+      all_users: users,
     });
+  } catch (err) {
+    console.log("Error", err);
+    return;
+  }
 };
 
 //module.export.actionName = function(req, res) {}
