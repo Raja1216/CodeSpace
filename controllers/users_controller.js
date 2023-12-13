@@ -77,12 +77,28 @@ module.exports.destroySession = function (req, res, next) {
   });
 };
 
-module.exports.updateUser = function (req, res) {
-  User.findByIdAndUpdate(req.params.id, req.body)
-    .then((user) => {
-      return res.redirect("back");
+module.exports.updateUser = async function (req, res) {
+  // User.findByIdAndUpdate(req.params.id, req.body)
+  //   .then((user) => {
+  //     console.log(User.avaterPath);
+  //     return res.redirect("back");
+  //   })
+  //   .catch((err) => {
+  //     return res.status(401).send('Unauthorized');
+  //   });
+  try {
+    let user = await User.findByIdAndUpdate(req.params.id);
+    User.uploadAvater(req, res, function (err) {
+      if (err) {console.log("Error in Multer",err);}
+      user.name = req.body.name;
+      user.email = req.body.email;
+      if (req.file) {
+        user.avatar = User.avaterPath +'/'+ req.file.filename;
+        user.save();
+        return res.redirect("back");
+      }
     })
-    .catch((err) => {
-      return res.status(401).send('Unauthorized');
-    });
+  } catch (error) {
+    return res.status(401).send('Unauthorized');
+  }
 };
